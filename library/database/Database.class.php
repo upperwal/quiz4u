@@ -188,11 +188,5 @@ class Database {
 
 // }}}
 
-
-$abc = new Database();
-//echo $abc;
-$abc->query("select * from user");
-$val = $abc->fetch('username');
-echo $val;
 ?>
 

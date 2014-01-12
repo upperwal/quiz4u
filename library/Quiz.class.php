@@ -21,3 +21,15 @@
  * @see 		
  * @since 		File available since 1.0
  */ 
+
+require_once('database/Database.class.php');
+
+class Quiz {
+	function __construct() {
+		$database = new Database();
+		$database->query("select * from user");
+		echo $database->fetch("id");
+	}
+}
+
+new Quiz();

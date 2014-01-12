@@ -13,6 +13,6 @@ File Structure
 4. font: All fonts reside in this folder.
 5. js: All javascript code and files inside this 
    folder.
-6. library: Used for all PHP classes.
+6. library: Used for all PHP classes.<br>
 	6.1 Database: Used for database connectivity and query class or code.
 

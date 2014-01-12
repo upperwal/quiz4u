@@ -34,16 +34,17 @@
 
 class Database {
 	private $hostAddress = "localhost";
-	private $userName = 'root';
+	private $userName = "root";
 	private $password = "root";
 	private $databaseName = "buymebook";
 	private $databaseLink;
+	private $PDOQuery;
 	/**
 	* Constructor connects to MySQL server
 	*/
 	function __construct() {
 		try {
-			$this->databaseLink = new PDO('mysql:host='.$hostAddress.';dbname=buymebook', 'root', 'root');
+			$this->databaseLink = new PDO('mysql:host='.$hostAddress.';dbname=buymebook', $this->userName, $this->password);
 
 			/**
 			 * set the error reporting attribute 
@@ -56,10 +57,24 @@ class Database {
 		}
 	}
 
+	public function __toString() {
+		//$val = ;
+		if ($this->databaseLink) {
+			return "Database Connected";
+		}
+		else {
+			return $this->databaseLink->errorInfo();
+		}
+	}
+
 	function query($queryText) {
-		$PDOQuery = $this->databaseLink->prepare($queryText);
-		$PDOQuery->execute();
-		echo $PDOQuery->fetchAll()[7]['username'];
+		$this->PDOQuery = $this->databaseLink->prepare($queryText);
+		$this->PDOQuery->execute();
+		
+	}
+
+	function fetch() {
+		return $this->PDOQuery->fetch()['username'];
 	}
 
 }
@@ -67,7 +82,9 @@ class Database {
 
 $abc = new Database();
 $abc->query("select username from user");
-
-
+echo $abc->fetch();
+echo $abc->fetch();
+echo $abc->fetch();
+echo $abc;
 ?>
 

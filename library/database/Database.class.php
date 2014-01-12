@@ -67,24 +67,42 @@ class Database {
 		}
 	}
 
-	function query($queryText) {
+	public function query($queryText) {
 		$this->PDOQuery = $this->databaseLink->prepare($queryText);
 		$this->PDOQuery->execute();
 		
 	}
 
-	function fetch() {
-		return $this->PDOQuery->fetch()['username'];
+	public function fetch($fieldName) {
+		if ($this->PDOQuery->fetch()[$fieldName]) {
+			return $this->PDOQuery->fetch()[$fieldName];
+		}
+		else
+			return "Field name not found";
+		
+	}
+
+	public function fetchAll($mode='ret') {
+		switch ($mode) {
+			case 'ret':
+				return $this->PDOQuery->fetchAll();
+				break;
+			case 'display':
+				print_r($this->PDOQuery->fetchAll());
+				break;
+			default:
+				echo "Database::fetchAll() does not support this mode.";
+				break;
+		}
 	}
 
 }
 
 
 $abc = new Database();
-$abc->query("select username from user");
-echo $abc->fetch();
-echo $abc->fetch();
-echo $abc->fetch();
 echo $abc;
+$abc->query("select username from user");
+$val = $abc->fetchAll();
+echo $val[0][0];
 ?>
 

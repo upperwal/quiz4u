@@ -143,6 +143,73 @@ class Database {
 
 	// }}}
 
+	// {{{ prepare()
+
+	/**
+	 * Prepare an sql query
+	 *
+	 * This function prepare the query given in the attribute.
+	 *
+	 * @param 	string 	$queryText	query to prepare
+	 * @return 	void
+	 * @throws 	none
+	 * @access  public
+	 * @since 	Method available since version 1.0
+	 */
+	public function prepare($queryText) {
+		if ($this->PDOQuery = $this->databaseLink->prepare($queryText)) {
+			echo "true prepare";
+		}
+	}
+
+	// }}}
+
+	// {{{ bind()
+
+	/**
+	 * Binds the parameters with the query
+	 *
+	 * This function binds the parameters to the query given in the attribute.
+	 *
+	 * @param 	string 	$queryText	query to execute
+	 * @return 	void
+	 * @throws 	none
+	 * @access  public
+	 * @since 	Method available since version 1.0
+	 */
+	public function bind($bindName, $bindValue, $bindType='string') {
+		if ($bindType == 'string') {
+			$actualBindType = PDO::PARAM_STR;		
+		}
+		elseif ($bindType == 'int') {
+			$actualBindType = PDO::PARAM_INT;
+		}
+		if ($this->PDOQuery->bindParam(':'.$bindName, $bindValue, $actualBindType)) {
+			echo "true bind";
+		}
+	}
+
+	// }}}
+
+	// {{{ execute()
+
+	/**
+	 * Execute the query after prepare and bind
+	 *
+	 * This function execute the query once it is prepared and binded.
+	 * @return 	void
+	 * @throws 	none
+	 * @access  public
+	 * @since 	Method available since version 1.0
+	 */
+	public function execute() {
+		if ($this->PDOQuery->execute()) {
+				echo "true exe";
+			}	
+	}
+
+	// }}}
+
 	// {{{ fetch()
 
 	/**

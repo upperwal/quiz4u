@@ -50,6 +50,9 @@ $delete_tooltip = "Delete this Quiz";
                 <li><a href="#lC" data-toggle="tab">
                   <span class="badge">3</span>&nbsp;Report
                 </a></li>
+                <li><a href="#lD" data-toggle="tab">
+                  <span class="badge">3</span>&nbsp;Admin Section
+                </a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="lA">
@@ -198,6 +201,32 @@ $delete_tooltip = "Delete this Quiz";
                 <div class="tab-pane" id="lC">
                   
                   <?php include('report_panel.php'); ?>
+            
+
+
+
+
+                </div>
+                <div class="tab-pane" id="lD">
+                  
+                  <div class="tabbable" style="margin-bottom: 18px;">
+              <ul class="nav nav-tabs">
+                <li class=""><a href="#tab1" data-toggle="tab">Section 1</a></li>
+                <li class=""><a href="#tab2" data-toggle="tab">Section 2</a></li>
+                <li class="active"><a href="#tab3" data-toggle="tab">Section 3</a></li>
+              </ul>
+              <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                <div class="tab-pane" id="tab1">
+                  <p>I'm in Section 1.</p>
+                </div>
+                <div class="tab-pane" id="tab2">
+                  <p>Howdy, I'm in Section 2.</p>
+                </div>
+                <div class="tab-pane active" id="tab3">
+                  <p>What up girl, this is Section 3.</p>
+                </div>
+              </div>
+            </div>
             
 
 
